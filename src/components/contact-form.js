@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Form } from 'react-bootstrap';
 import { Controller, useForm } from 'react-hook-form';
 import { FormButton } from './ui';
-// import ReCAPTCHA from 'react-google-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 if (typeof RECAPTCHA_KEY === 'undefined') {
@@ -80,7 +80,7 @@ export default function ContactForm() {
                 )}
             />
             <input type="hidden" name="form-name" value="contact" />
-            {/* <ReCAPTCHA ref={recaptchaRef} sitekey={RECAPTCHA_KEY} /> */}
+            <ReCAPTCHA ref={recaptchaRef} sitekey={RECAPTCHA_KEY} />
             <div data-netlify-recaptcha="true"></div>
             <FormButton variant="reversed" type="submit">
                 Submit
