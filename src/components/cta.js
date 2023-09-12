@@ -13,7 +13,6 @@ import {
 import ContactForm from "./contact-form";
 
 export default function HomepageCta(props) {
-  console.log(props);
   return (
     <Container width="fullbleed" id={props.sectionId}>
       <Section padding={5} radius="large" background="primary">

@@ -1,28 +1,28 @@
-const fs = require("fs")
-const path = require("path")
-const spaceImport = require("contentful-import")
-const inquirer = require("inquirer")
-const chalk = require("chalk")
-const data = require("./data.json")
+const fs = require("fs");
+const path = require("path");
+const spaceImport = require("contentful-import");
+const inquirer = require("inquirer");
+const chalk = require("chalk");
+const data = require("./data.json");
 
-const argv = require("yargs-parser")(process.argv.slice(2))
+const argv = require("yargs-parser")(process.argv.slice(2));
 
 console.log(`
   To set up this project you will need your Contentful Space ID
   and API access tokens. Please use an empty Contentful space for this.
   You can find all the needed information in your Contentful space under:
   ${chalk.yellow(
-    `app.contentful.com ${chalk.red("->")} Space Settings ${chalk.red(
-      "->"
-    )} API keys`
-  )}
+  `app.contentful.com ${chalk.red("->")} Space Settings ${chalk.red(
+    "->"
+  )} API keys`
+)}
   The ${chalk.green("Content Management API Token")}
     will be used to import and write data to your space.
   The ${chalk.green("Content Delivery API Token")}
     will be used to ship published production-ready content in your Gatsby app.
 
   Ready? Let's do it! 🎉
-`)
+`);
 
 const questions = [
   {
@@ -47,7 +47,7 @@ const questions = [
     when: !argv.managementToken && !process.env.CONTENTFUL_MANAGEMENT_TOKEN,
     message: "Your Content Management API access token",
   },
-]
+];
 
 inquirer
   .prompt(questions)
@@ -63,13 +63,13 @@ inquirer
         CONTENTFUL_ACCESS_TOKEN,
         CONTENTFUL_DELIVERY_ACCESS_TOKEN,
         CONTENTFUL_MANAGEMENT_TOKEN,
-      } = process.env
+      } = process.env;
 
       // env vars are given precedence followed by args provided to the setup
       // followed by input given to prompts displayed by the setup script
-      spaceId = CONTENTFUL_SPACE_ID || argv.spaceId || spaceId
+      spaceId = CONTENTFUL_SPACE_ID || argv.spaceId || spaceId;
       managementToken =
-        CONTENTFUL_MANAGEMENT_TOKEN || argv.managementToken || managementToken
+        CONTENTFUL_MANAGEMENT_TOKEN || argv.managementToken || managementToken;
       // Some scripts that set up this repo use `deliveryToken` and
       // `CONTENTFUL_DELIVERY_TOKEN`, instead of `accessToken` and
       // `CONTENTFUL_ACCESS_TOKEN`. Until all scripts are updated to
@@ -80,12 +80,12 @@ inquirer
         CONTENTFUL_DELIVERY_ACCESS_TOKEN ||
         argv.accessToken ||
         argv.deliveryToken ||
-        accessToken
+        accessToken;
 
-      console.log("Writing config file...")
+      console.log("Writing config file...");
       const configFiles = [`.env.development`, `.env.production`].map((file) =>
         path.join(__dirname, "..", file)
-      )
+      );
 
       const fileContents = [
         `# All environment variables will be sourced`,
@@ -95,19 +95,19 @@ inquirer
         `CONTENTFUL_ACCESS_TOKEN='${accessToken}'`,
       ]
         .filter(Boolean)
-        .join("\n")
+        .join("\n");
 
       configFiles.forEach((file) => {
-        fs.writeFileSync(file, fileContents, "utf8")
-        console.log(`Config file ${chalk.yellow(file)} written`)
-      })
+        fs.writeFileSync(file, fileContents, "utf8");
+        console.log(`Config file ${chalk.yellow(file)} written`);
+      });
 
       fs.appendFileSync(
         ".env.development",
         '\n# To enable previews locally, uncomment the next line:\n# CONTENTFUL_HOST="preview.contentful.com"'
-      )
+      );
 
-      return { spaceId, managementToken }
+      return { spaceId, managementToken };
     }
   )
   .then(({ spaceId, managementToken }) =>
@@ -118,6 +118,6 @@ inquirer
       `All set! You can now run ${chalk.yellow(
         "yarn start"
       )} to see it in action.`
-    )
+    );
   })
-  .catch((error) => console.error(error))
+  .catch((error) => console.error(error));
