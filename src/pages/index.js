@@ -11,7 +11,7 @@ export default function Homepage(props) {
 
   return (
     <Layout>
-      {homepage.blocks.map((block) => {
+      {homepage?.blocks?.map((block) => {
         const { id, blocktype, ...componentProps } = block;
         const Component = sections[blocktype] || Fallback;
         return <Component key={id} {...componentProps} />;
