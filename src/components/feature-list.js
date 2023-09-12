@@ -1,11 +1,11 @@
-import * as React from "react"
-import { graphql } from "gatsby"
-import { Container, Box, Kicker, Heading, Text } from "./ui"
-import Feature from "./feature"
+import * as React from "react";
+import { graphql } from "gatsby";
+import { Container, Box, Kicker, Heading, Text } from "./ui";
+import Feature from "./feature";
 
 export default function FeatureList(props) {
   return (
-    <Container width="fullbleed">
+    <Container width="fullbleed" id={props.sectionId}>
       <Box background="muted" radius="large">
         <Box center paddingY={5}>
           <Heading>
@@ -14,18 +14,19 @@ export default function FeatureList(props) {
           </Heading>
           {props.text && <Text>{props.text}</Text>}
         </Box>
-        {props.content.map((feature, i) => (
+        {props?.content?.map((feature, i) => (
           <Feature key={feature.id} {...feature} flip={Boolean(i % 2)} />
         ))}
       </Box>
     </Container>
-  )
+  );
 }
 
 export const query = graphql`
   fragment HomepageFeatureListContent on HomepageFeatureList {
     id
     kicker
+    sectionId
     heading
     text
     content {
@@ -33,4 +34,4 @@ export const query = graphql`
       ...HomepageFeatureContent
     }
   }
-`
+`;

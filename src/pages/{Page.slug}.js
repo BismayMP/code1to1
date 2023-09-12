@@ -1,11 +1,12 @@
-import * as React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import { Container, Box, Heading } from "../components/ui"
-import SEOHead from "../components/head"
+import * as React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import { Container, Box, Heading } from "../components/ui";
+import SEOHead from "../components/head";
 
 export default function Page(props) {
-  const { page } = props.data
+  const { page } = props.data;
 
   return (
     <Layout>
@@ -20,12 +21,12 @@ export default function Page(props) {
         </Container>
       </Box>
     </Layout>
-  )
+  );
 }
 export const Head = (props) => {
-  const { page } = props.data
-  return <SEOHead {...page} />
-}
+  const { page } = props.data;
+  return <SEOHead {...page} />;
+};
 export const query = graphql`
   query PageContent($id: String!) {
     page(id: { eq: $id }) {
@@ -40,4 +41,4 @@ export const query = graphql`
       html
     }
   }
-`
+`;

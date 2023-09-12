@@ -1,6 +1,6 @@
-import * as React from "react"
-import { graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import * as React from "react";
+import { graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import {
   Nudge,
   Container,
@@ -8,21 +8,28 @@ import {
   Heading,
   Text,
   ButtonList,
-  Kicker,
-} from "./ui"
+  Kicker
+} from "./ui";
+import ContactForm from "./contact-form";
 
 export default function HomepageCta(props) {
+  console.log(props);
   return (
-    <Container width="fullbleed">
+    <Container width="fullbleed" id={props.sectionId}>
       <Section padding={5} radius="large" background="primary">
         <Heading center>
           {props.kicker && <Kicker center>{props.kicker}</Kicker>}
           {props.heading}
         </Heading>
-        <Text as="p" center variant="lead">
+        {props.text && <Text as="p" center variant="lead">
           {props.text}
         </Text>
+        }
         <ButtonList links={props.links} variant="center" reversed />
+        {
+          props.hasContactForm &&
+          <ContactForm />
+        }
         {props.image && (
           <Nudge left={5} right={5} bottom={5}>
             <GatsbyImage
@@ -33,15 +40,17 @@ export default function HomepageCta(props) {
         )}
       </Section>
     </Container>
-  )
+  );
 }
 
 export const query = graphql`
   fragment HomepageCtaContent on HomepageCta {
     id
     kicker
+    sectionId
     heading
     text
+    hasContactForm
     image {
       alt
       id
@@ -53,4 +62,4 @@ export const query = graphql`
       text
     }
   }
-`
+`;

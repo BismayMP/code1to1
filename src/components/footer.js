@@ -1,5 +1,5 @@
-import * as React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import * as React from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import {
   Twitter,
   Twitch,
@@ -7,7 +7,7 @@ import {
   Facebook,
   Youtube,
   GitHub,
-} from "react-feather"
+} from "react-feather";
 import {
   Container,
   Flex,
@@ -18,8 +18,8 @@ import {
   Text,
   IconLink,
   VisuallyHidden,
-} from "./ui"
-import BrandLogo from "./brand-logo"
+} from "./ui";
+import BrandLogo from "./brand-logo";
 
 const socialMedia = {
   TWITTER: {
@@ -52,21 +52,21 @@ const socialMedia = {
     name: "Twitch",
     icon: <Twitch />,
   },
-}
+};
 
 const getSocialURL = ({ service, username }) => {
-  const domain = socialMedia[service]?.url
-  if (!domain) return false
-  return `${domain}/${username}`
-}
+  const domain = socialMedia[service]?.url;
+  if (!domain) return false;
+  return `${domain}/${username}`;
+};
 
 const getSocialIcon = ({ service }) => {
-  return socialMedia[service]?.icon
-}
+  return socialMedia[service]?.icon;
+};
 
 const getSocialName = ({ service }) => {
-  return socialMedia[service]?.name
-}
+  return socialMedia[service]?.name;
+};
 
 export default function Footer() {
   const data = useStaticQuery(graphql`
@@ -93,23 +93,23 @@ export default function Footer() {
         }
       }
     }
-  `)
+  `);
 
-  const { links, meta, socialLinks, copyright } = data.layout.footer
+  const { links, meta, socialLinks, copyright } = data.layout.footer;
 
   return (
     <Box as="footer" paddingY={4}>
       <Container>
         <Flex variant="start" responsive>
-          <NavLink to="/">
+          {/* <NavLink to="/">
             <VisuallyHidden>Home</VisuallyHidden>
             <BrandLogo />
-          </NavLink>
+          </NavLink> */}
           <Space />
           <FlexList>
             {socialLinks &&
               socialLinks.map((link) => {
-                const url = getSocialURL(link)
+                const url = getSocialURL(link);
                 return (
                   url && (
                     <li key={link.id}>
@@ -119,7 +119,7 @@ export default function Footer() {
                       </IconLink>
                     </li>
                   )
-                )
+                );
               })}
           </FlexList>
         </Flex>
@@ -149,5 +149,5 @@ export default function Footer() {
       </Container>
       <Space size={3} />
     </Box>
-  )
+  );
 }

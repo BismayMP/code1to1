@@ -1,15 +1,15 @@
 // support for .env, .env.development, and .env.production
-require("dotenv").config()
+require("dotenv").config();
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://gatsbycontentfulhomepage.gatsbyjs.io/",
-    title: "Gatsby Contentful Homepage Starter",
-    author: `Gatsby`,
-    description: "A Gatsby Starter for building homepages with Contentful",
+    siteUrl: "https://code1to1.com/",
+    title: "Code1to1",
+    author: `Bismay`,
+    description: "Software solutions tailored to your needs",
   },
   plugins: [
     {
@@ -28,8 +28,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "Gatsby Starter Contentful Homepage",
-        short_name: "Gatsby",
+        name: "Code1to1",
+        short_name: "Code1to1",
         start_url: "/",
         // These can be imported once ESM support lands
         background_color: "#ffe491",
@@ -38,4 +38,4 @@ module.exports = {
       },
     },
   ],
-}
+};

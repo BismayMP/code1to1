@@ -1,6 +1,6 @@
-import * as React from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import { Menu, X } from "react-feather"
+import * as React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import { Menu, X } from "react-feather";
 import {
   Container,
   Flex,
@@ -11,16 +11,16 @@ import {
   InteractiveIcon,
   Nudge,
   VisuallyHidden,
-} from "./ui"
+} from "./ui";
 import {
   mobileNavOverlay,
   mobileNavLink,
   desktopHeaderNavWrapper,
   mobileHeaderNavWrapper,
   mobileNavSVGColorWrapper,
-} from "./header.css"
-import NavItemGroup from "./nav-item-group"
-import BrandLogo from "./brand-logo"
+} from "./header.css";
+import NavItemGroup from "./nav-item-group";
+import BrandLogo from "./brand-logo";
 
 export default function Header() {
   const data = useStaticQuery(graphql`
@@ -57,18 +57,18 @@ export default function Header() {
         }
       }
     }
-  `)
+  `);
 
-  const { navItems, cta } = data.layout.header
-  const [isOpen, setOpen] = React.useState(false)
+  const { navItems, cta } = data.layout.header;
+  const [isOpen, setOpen] = React.useState(false);
 
   React.useEffect(() => {
     if (isOpen) {
-      document.body.style.overflowY = "hidden"
+      document.body.style.overflowY = "hidden";
     } else {
-      document.body.style.overflowY = "visible"
+      document.body.style.overflowY = "visible";
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   return (
     <header>
@@ -158,5 +158,5 @@ export default function Header() {
         </div>
       )}
     </header>
-  )
+  );
 }

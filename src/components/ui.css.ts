@@ -480,6 +480,7 @@ export const buttons: Record<ButtonVariants, string> = styleVariants({
   primary: [
     button,
     {
+      border: "none",
       color: theme.colors.background,
       backgroundColor: theme.colors.primary,
       ":hover": {
@@ -493,13 +494,16 @@ export const buttons: Record<ButtonVariants, string> = styleVariants({
   reversed: [
     button,
     {
+      border: "none",
       color: theme.colors.primary,
       backgroundColor: theme.colors.background,
       ":hover": {
+        border: `1px solid ${theme.colors.background}`,
         color: theme.colors.background,
         backgroundColor: theme.colors.active,
       },
       ":focus": {
+        border: `1px solid ${theme.colors.background}`,
         color: theme.colors.background,
         backgroundColor: theme.colors.active,
       },

@@ -1,5 +1,5 @@
-const { documentToHtmlString } = require("@contentful/rich-text-html-renderer")
-const { getGatsbyImageResolver } = require("gatsby-plugin-image/graphql-utils")
+const { documentToHtmlString } = require("@contentful/rich-text-html-renderer");
+const { getGatsbyImageResolver } = require("gatsby-plugin-image/graphql-utils");
 
 exports.createSchemaCustomization = async ({ actions }) => {
   actions.createFieldExtension({
@@ -7,37 +7,37 @@ exports.createSchemaCustomization = async ({ actions }) => {
     extend(options) {
       return {
         resolve(source) {
-          return source.internal.type.replace("Contentful", "")
+          return source.internal.type.replace("Contentful", "");
         },
-      }
+      };
     },
-  })
+  });
 
   actions.createFieldExtension({
     name: "imagePassthroughArgs",
     extend(options) {
-      const { args } = getGatsbyImageResolver()
+      const { args } = getGatsbyImageResolver();
       return {
         args,
-      }
+      };
     },
-  })
+  });
 
   actions.createFieldExtension({
     name: "imageUrl",
     extend(options) {
-      const schemaRE = /^\/\//
+      const schemaRE = /^\/\//;
       const addURLSchema = (str) => {
-        if (schemaRE.test(str)) return `https:${str}`
-        return str
-      }
+        if (schemaRE.test(str)) return `https:${str}`;
+        return str;
+      };
       return {
         resolve(source) {
-          return addURLSchema(source.file.url)
+          return addURLSchema(source.file.url);
         },
-      }
+      };
     },
-  })
+  });
 
   actions.createFieldExtension({
     name: "navItemType",
@@ -52,28 +52,28 @@ exports.createSchemaCustomization = async ({ actions }) => {
         resolve() {
           switch (options.name) {
             case "Group":
-              return "Group"
+              return "Group";
             default:
-              return "Link"
+              return "Link";
           }
         },
-      }
+      };
     },
-  })
+  });
 
   actions.createFieldExtension({
     name: "richText",
     extend(options) {
       return {
         resolve(source, args, context, info) {
-          const body = source.body
-          const doc = JSON.parse(body.raw)
-          const html = documentToHtmlString(doc)
-          return html
+          const body = source.body;
+          const doc = JSON.parse(body.raw);
+          const html = documentToHtmlString(doc);
+          return html;
         },
-      }
+      };
     },
-  })
+  });
 
   // abstract interfaces
   actions.createTypes(/* GraphQL */ `
@@ -118,6 +118,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
     interface HomepageHero implements Node & HomepageBlock {
       id: ID!
+      sectionId: String
       blocktype: String
       heading: String!
       kicker: String
@@ -139,6 +140,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
     interface HomepageFeatureList implements Node & HomepageBlock {
       id: ID!
+      sectionId: String
       blocktype: String
       kicker: String
       heading: String
@@ -148,10 +150,12 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
     interface HomepageCta implements Node & HomepageBlock {
       id: ID!
+      sectionId: String
       blocktype: String
       kicker: String
       heading: String
       text: String
+      hasContactForm: Boolean
       image: HomepageImage
       links: [HomepageLink]
     }
@@ -164,6 +168,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
     interface HomepageLogoList implements Node & HomepageBlock {
       id: ID!
+      sectionId: String
       blocktype: String
       text: String
       logos: [HomepageLogo]
@@ -228,6 +233,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
     interface HomepageProductList implements Node & HomepageBlock {
       id: ID!
+      sectionId: String
       blocktype: String
       heading: String
       kicker: String
@@ -340,7 +346,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
       image: HomepageImage
       html: String!
     }
-  `)
+  `);
 
   // CMS-specific types for Homepage
   actions.createTypes(/* GraphQL */ `
@@ -380,6 +386,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
     type ContentfulHomepageHero implements Node & HomepageHero & HomepageBlock
       @dontInfer {
       id: ID!
+      sectionId: String
       blocktype: String @blocktype
       heading: String!
       kicker: String
@@ -401,6 +408,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
     type ContentfulHomepageFeatureList implements Node & HomepageBlock & HomepageFeatureList
       @dontInfer {
+      sectionId: String
       blocktype: String @blocktype
       kicker: String
       heading: String
@@ -410,10 +418,12 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
     type ContentfulHomepageCta implements Node & HomepageBlock & HomepageCta
       @dontInfer {
+      sectionId: String
       blocktype: String @blocktype
       kicker: String
       heading: String
       text: String
+      hasContactForm: Boolean
       image: HomepageImage @link(from: "image___NODE")
       links: [HomepageLink] @link(from: "links___NODE")
     }
@@ -426,6 +436,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
     type ContentfulHomepageLogoList implements Node & HomepageBlock & HomepageLogoList
       @dontInfer {
+      sectionId: String
       blocktype: String @blocktype
       text: String
       logos: [HomepageLogo] @link(from: "logos___NODE")
@@ -495,6 +506,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
 
     type ContentfulHomepageProductList implements Node & HomepageProductList & HomepageBlock
       @dontInfer {
+      sectionId: String
       blocktype: String @blocktype
       heading: String
       kicker: String
@@ -509,7 +521,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
       image: HomepageImage @link(from: "image___NODE")
       content: [HomepageBlock] @link(from: "content___NODE")
     }
-  `)
+  `);
 
   // CMS specific types for About page
   actions.createTypes(/* GraphQL */ `
@@ -568,7 +580,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
       image: HomepageImage @link(from: "image___NODE")
       content: [HomepageBlock] @link(from: "content___NODE")
     }
-  `)
+  `);
 
   // Layout types
   actions.createTypes(/* GraphQL */ `
@@ -597,7 +609,7 @@ exports.createSchemaCustomization = async ({ actions }) => {
       header: LayoutHeader @link(from: "header___NODE")
       footer: LayoutFooter @link(from: "footer___NODE")
     }
-  `)
+  `);
 
   // Page types
   actions.createTypes(/* GraphQL */ `
@@ -609,18 +621,17 @@ exports.createSchemaCustomization = async ({ actions }) => {
       image: HomepageImage @link(from: "image___NODE")
       html: String! @richText
     }
-  `)
-}
+  `);
+};
 
 exports.createPages = ({ actions }) => {
-  const { createSlice } = actions
+  const { createSlice } = actions;
   createSlice({
     id: "header",
     component: require.resolve("./src/components/header.js"),
-  })
+  });
   createSlice({
     id: "footer",
     component: require.resolve("./src/components/footer.js"),
-  })
-}
-      
+  });
+};

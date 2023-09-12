@@ -1,6 +1,6 @@
-import { graphql } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import * as React from "react"
+import { graphql } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import * as React from "react";
 import {
   Box,
   ButtonList,
@@ -11,11 +11,11 @@ import {
   Section,
   Subhead,
   Text,
-} from "./ui"
+} from "./ui";
 
 export default function Hero(props) {
   return (
-    <Section>
+    <Section id={props.sectionId}>
       <Container>
         <Flex gap={4} variant="responsive">
           <Box width="half">
@@ -38,13 +38,14 @@ export default function Hero(props) {
         </Flex>
       </Container>
     </Section>
-  )
+  );
 }
 
 export const query = graphql`
   fragment HomepageHeroContent on HomepageHero {
     id
     kicker
+    sectionId
     h1: heading
     subhead
     text
@@ -59,4 +60,4 @@ export const query = graphql`
       alt
     }
   }
-`
+`;

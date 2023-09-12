@@ -1,6 +1,7 @@
-import * as React from "react"
+import * as React from "react";
+import logo from "../icons/logo.png";
 
-export default function GatsbyContentfulLogo() {
+export function GatsbyContentfulLogo() {
   return (
     <svg
       width="82"
@@ -45,5 +46,17 @@ export default function GatsbyContentfulLogo() {
         strokeWidth="1.5"
       />
     </svg>
-  )
+  );
 }
+
+export default function Code1to1Logo(props) {
+  return (
+    <img
+      alt="Code 1to1, Software development"
+      src={logo}
+      style={{ height: "82px" }}
+    />
+  );
+
+};
+

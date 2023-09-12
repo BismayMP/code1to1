@@ -6,7 +6,7 @@
           "sys": {
             "type": "Link",
             "linkType": "Space",
-            "id": "p39nycxzit31"
+            "id": "496h1tan5p68"
           }
         },
         "id": "homepage",
@@ -229,7 +229,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageLink"]
+                "linkContentType": [
+                  "homepageLink"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -415,7 +417,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageLink"]
+                "linkContentType": [
+                  "homepageLink"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -591,7 +595,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageTestimonial"]
+                "linkContentType": [
+                  "homepageTestimonial"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -787,7 +793,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageBenefit"]
+                "linkContentType": [
+                  "homepageBenefit"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -889,7 +897,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageLink"]
+                "linkContentType": [
+                  "homepageLink"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -1066,7 +1076,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageLogo"]
+                "linkContentType": [
+                  "homepageLogo"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -1251,7 +1263,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageStat"]
+                "linkContentType": [
+                  "homepageStat"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -1302,7 +1316,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageLink"]
+                "linkContentType": [
+                  "homepageLink"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -1379,7 +1395,9 @@
           "required": false,
           "validations": [
             {
-              "linkContentType": ["layoutHeader"]
+              "linkContentType": [
+                "layoutHeader"
+              ]
             }
           ],
           "disabled": false,
@@ -1394,7 +1412,9 @@
           "required": false,
           "validations": [
             {
-              "linkContentType": ["layoutFooter"]
+              "linkContentType": [
+                "layoutFooter"
+              ]
             }
           ],
           "disabled": false,
@@ -1472,7 +1492,9 @@
           "required": false,
           "validations": [
             {
-              "linkContentType": ["homepageLink"]
+              "linkContentType": [
+                "homepageLink"
+              ]
             }
           ],
           "disabled": false,
@@ -1492,7 +1514,10 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["navItem", "navItemGroup"]
+                "linkContentType": [
+                  "navItem",
+                  "navItemGroup"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -1574,7 +1599,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageLink"]
+                "linkContentType": [
+                  "homepageLink"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -1593,7 +1620,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["socialLink"]
+                "linkContentType": [
+                  "socialLink"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -1612,7 +1641,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageLink"]
+                "linkContentType": [
+                  "homepageLink"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -1811,7 +1842,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageLink"]
+                "linkContentType": [
+                  "homepageLink"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -1903,7 +1936,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageProduct"]
+                "linkContentType": [
+                  "homepageProduct"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -2015,7 +2050,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageFeature"]
+                "linkContentType": [
+                  "homepageFeature"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -2133,7 +2170,12 @@
           "required": false,
           "validations": [
             {
-              "enabledMarks": ["bold", "italic", "underline", "code"],
+              "enabledMarks": [
+                "bold",
+                "italic",
+                "underline",
+                "code"
+              ],
               "message": "Only bold, italic, underline, and code marks are allowed"
             },
             {
@@ -2286,7 +2328,12 @@
           "required": false,
           "validations": [
             {
-              "enabledMarks": ["bold", "italic", "underline", "code"],
+              "enabledMarks": [
+                "bold",
+                "italic",
+                "underline",
+                "code"
+              ],
               "message": "Only bold, italic, underline, and code marks are allowed"
             },
             {
@@ -2751,7 +2798,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["aboutProfile"]
+                "linkContentType": [
+                  "aboutProfile"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -2912,7 +2961,9 @@
           "required": false,
           "validations": [
             {
-              "linkContentType": ["homepageLink"]
+              "linkContentType": [
+                "homepageLink"
+              ]
             }
           ],
           "disabled": false,
@@ -2932,7 +2983,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageLink"]
+                "linkContentType": [
+                  "homepageLink"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -2951,7 +3004,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["homepageLogo"]
+                "linkContentType": [
+                  "homepageLogo"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -3033,7 +3088,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["navItem"]
+                "linkContentType": [
+                  "navItem"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -3209,7 +3266,9 @@
             "type": "Link",
             "validations": [
               {
-                "linkContentType": ["navItem"]
+                "linkContentType": [
+                  "navItem"
+                ]
               }
             ],
             "linkType": "Entry"
@@ -21668,7 +21727,9 @@
       "name": "Gatsby Build Webhook",
       "url": "https://webhook.gatsbyjs.com/hooks/data_source/publish/e9f6b75f-167c-464b-bd91-0bbd4ffd73f3",
       "httpBasicUsername": null,
-      "topics": ["*.*"],
+      "topics": [
+        "*.*"
+      ],
       "filters": null,
       "transformation": null,
       "active": true,
@@ -21706,7 +21767,9 @@
       "name": "Gatsby Preview Webhook",
       "url": "https://webhook.gatsbyjs.com/hooks/data_source/e9f6b75f-167c-464b-bd91-0bbd4ffd73f3",
       "httpBasicUsername": null,
-      "topics": ["*.*"],
+      "topics": [
+        "*.*"
+      ],
       "filters": null,
       "transformation": null,
       "active": true,
@@ -21748,7 +21811,9 @@
       "policies": [
         {
           "effect": "allow",
-          "actions": ["create"],
+          "actions": [
+            "create"
+          ],
           "constraint": {
             "and": [
               {
@@ -21764,7 +21829,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["read"],
+          "actions": [
+            "read"
+          ],
           "constraint": {
             "and": [
               {
@@ -21780,7 +21847,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["update"],
+          "actions": [
+            "update"
+          ],
           "constraint": {
             "and": [
               {
@@ -21796,7 +21865,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["create"],
+          "actions": [
+            "create"
+          ],
           "constraint": {
             "and": [
               {
@@ -21812,7 +21883,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["read"],
+          "actions": [
+            "read"
+          ],
           "constraint": {
             "and": [
               {
@@ -21828,7 +21901,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["update"],
+          "actions": [
+            "update"
+          ],
           "constraint": {
             "and": [
               {
@@ -21844,7 +21919,9 @@
         }
       ],
       "permissions": {
-        "ContentModel": ["read"],
+        "ContentModel": [
+          "read"
+        ],
         "Settings": [],
         "ContentDelivery": [],
         "Environments": [],
@@ -21918,7 +21995,9 @@
         }
       ],
       "permissions": {
-        "ContentModel": ["read"],
+        "ContentModel": [
+          "read"
+        ],
         "Settings": [],
         "ContentDelivery": [],
         "Environments": [],
@@ -21960,7 +22039,9 @@
       "policies": [
         {
           "effect": "allow",
-          "actions": ["create"],
+          "actions": [
+            "create"
+          ],
           "constraint": {
             "and": [
               {
@@ -21976,7 +22057,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["create"],
+          "actions": [
+            "create"
+          ],
           "constraint": {
             "and": [
               {
@@ -21992,7 +22075,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["read"],
+          "actions": [
+            "read"
+          ],
           "constraint": {
             "and": [
               {
@@ -22016,7 +22101,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["update"],
+          "actions": [
+            "update"
+          ],
           "constraint": {
             "and": [
               {
@@ -22047,7 +22134,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["delete"],
+          "actions": [
+            "delete"
+          ],
           "constraint": {
             "and": [
               {
@@ -22071,7 +22160,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["read"],
+          "actions": [
+            "read"
+          ],
           "constraint": {
             "and": [
               {
@@ -22095,7 +22186,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["update"],
+          "actions": [
+            "update"
+          ],
           "constraint": {
             "and": [
               {
@@ -22126,7 +22219,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["delete"],
+          "actions": [
+            "delete"
+          ],
           "constraint": {
             "and": [
               {
@@ -22150,7 +22245,9 @@
         }
       ],
       "permissions": {
-        "ContentModel": ["read"],
+        "ContentModel": [
+          "read"
+        ],
         "Settings": [],
         "ContentDelivery": [],
         "Environments": [],
@@ -22192,7 +22289,9 @@
       "policies": [
         {
           "effect": "allow",
-          "actions": ["read"],
+          "actions": [
+            "read"
+          ],
           "constraint": {
             "and": [
               {
@@ -22208,7 +22307,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["read"],
+          "actions": [
+            "read"
+          ],
           "constraint": {
             "and": [
               {
@@ -22224,7 +22325,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["update"],
+          "actions": [
+            "update"
+          ],
           "constraint": {
             "and": [
               {
@@ -22247,7 +22350,9 @@
         },
         {
           "effect": "allow",
-          "actions": ["update"],
+          "actions": [
+            "update"
+          ],
           "constraint": {
             "and": [
               {
@@ -22270,7 +22375,9 @@
         }
       ],
       "permissions": {
-        "ContentModel": ["read"],
+        "ContentModel": [
+          "read"
+        ],
         "Settings": [],
         "ContentDelivery": [],
         "Environments": [],

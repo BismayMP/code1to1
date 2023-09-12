@@ -1,5 +1,5 @@
-import * as React from "react"
-import { graphql } from "gatsby"
+import * as React from "react";
+import { graphql } from "gatsby";
 import {
   Container,
   Section,
@@ -11,7 +11,7 @@ import {
   Box,
   Icon,
   LinkList,
-} from "./ui"
+} from "./ui";
 
 function Product(props) {
   return (
@@ -27,12 +27,12 @@ function Product(props) {
       <Text>{props.text}</Text>
       <LinkList links={props.links} />
     </Box>
-  )
+  );
 }
 
 export default function ProductList(props) {
   return (
-    <Section>
+    <Section id={props.sectionId}>
       <Container>
         <Box center paddingY={4}>
           <Heading>
@@ -42,7 +42,7 @@ export default function ProductList(props) {
           {props.text && <Text>{props.text}</Text>}
         </Box>
         <FlexList gap={4} variant="responsive">
-          {props.content.map((product) => (
+          {props?.content?.map((product) => (
             <li key={product.id}>
               <Product {...product} />
             </li>
@@ -50,7 +50,7 @@ export default function ProductList(props) {
         </FlexList>
       </Container>
     </Section>
-  )
+  );
 }
 
 export const query = graphql`
@@ -58,6 +58,7 @@ export const query = graphql`
     id
     kicker
     heading
+    sectionId
     text
     content {
       id
@@ -75,4 +76,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
