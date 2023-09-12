@@ -2,8 +2,21 @@ import * as React from 'react';
 import { Form } from 'react-bootstrap';
 import { Controller, useForm } from 'react-hook-form';
 import { Button, FormButton } from './ui';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+if (typeof RECAPTCHA_KEY === 'undefined') {
+    throw new Error(`Env var SITE_RECAPTCHA_KEY is undefined!`);
+}
+
+function encode(data) {
+    return Object.keys(data)
+        .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+}
 
 export default function ContactForm() {
+    const recaptchaRef = React.createRef();
     const { control, handleSubmit, setValue } = useForm({
         defaultValues: {
             name: "",
@@ -14,11 +27,13 @@ export default function ContactForm() {
     });
 
     const onSubmit = async (data) => {
+        const recaptchaValue = recaptchaRef.current.getValue();
         fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: encode({
                 'form-name': "contact",
+                'g-recaptcha-response': recaptchaValue,
                 ...data,
             }),
         })
@@ -65,6 +80,7 @@ export default function ContactForm() {
                 )}
             />
             <input type="hidden" name="form-name" value="contact" />
+            <ReCAPTCHA ref={recaptchaRef} sitekey={RECAPTCHA_KEY} />
             <div data-netlify-recaptcha="true"></div>
             <FormButton variant="reversed" type="submit">
                 Submit
