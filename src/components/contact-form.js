@@ -13,11 +13,14 @@ export default function ContactForm() {
         },
     });
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(data).toString(),
+            body: encode({
+                'form-name': "contact",
+                ...data,
+            }),
         })
             .then(() => alert("Thank you, we'll get in touch as soon as possible"))
             .catch((error) => alert(error));
@@ -28,7 +31,12 @@ export default function ContactForm() {
     };
 
     return (
-        <Form onSubmit={handleSubmit(onSubmit)} name="contact" data-netlify="true" data-netlify-recaptcha="true">
+        <Form
+            onSubmit={handleSubmit(onSubmit)}
+            name="contact"
+            data-netlify="true"
+            data-netlify-recaptcha="true"
+            netlify-honeypot="bot-field">
             <Controller
                 name="name"
                 control={control}
