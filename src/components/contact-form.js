@@ -26,7 +26,7 @@ export default function ContactForm() {
         },
     });
 
-    const onSubmit = async (data) => {
+    const onSubmit = (data) => {
         const recaptchaValue = recaptchaRef.current.getValue();
         fetch("/", {
             method: "POST",
