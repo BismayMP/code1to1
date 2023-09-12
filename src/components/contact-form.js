@@ -28,7 +28,7 @@ export default function ContactForm() {
     };
 
     return (
-        <Form onSubmit={handleSubmit(onSubmit)} name="contact" data-netlify="true" >
+        <Form onSubmit={handleSubmit(onSubmit)} name="contact" data-netlify="true" data-netlify-recaptcha="true">
             <Controller
                 name="name"
                 control={control}
