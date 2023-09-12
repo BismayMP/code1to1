@@ -13,8 +13,8 @@ export default function Homepage(props) {
     <Layout>
       {homepage?.blocks?.map((block) => {
         const { id, blocktype, ...componentProps } = block;
-        const Component = sections && sections[blocktype] || Fallback;
-        return <Component key={id} {...componentProps} />;
+        const Component = sections && sections[blocktype] ? sections[blocktype] : Fallback;
+        return Component ? <Component key={id} {...componentProps} /> : <></>;
       })}
     </Layout>
   );
