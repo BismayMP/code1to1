@@ -1,7 +1,7 @@
-import * as React from "react"
-import { graphql } from "gatsby"
-import { Container, Heading, FlexList, LinkList, Section, Box } from "./ui"
-import { LogoItem } from "./logo-list"
+import * as React from "react";
+import { graphql } from "gatsby";
+import { Container, Heading, FlexList, LinkList, Section, Box } from "./ui";
+import { LogoItem } from "./logo-list";
 
 export default function AboutLogoList(props) {
   return (
@@ -15,7 +15,7 @@ export default function AboutLogoList(props) {
       <Container width="narrow">
         <Box paddingY={6}>
           <FlexList gap={5} variant="center">
-            {props.logos.map((logo, i) => (
+            {props?.logos?.map((logo, i) => (
               <li key={`${logo.id}-${i}`}>
                 <LogoItem {...logo} />
               </li>
@@ -24,7 +24,7 @@ export default function AboutLogoList(props) {
         </Box>
       </Container>
     </Section>
-  )
+  );
 }
 
 export const query = graphql`
@@ -46,4 +46,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

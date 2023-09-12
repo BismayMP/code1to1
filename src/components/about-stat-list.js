@@ -1,7 +1,7 @@
-import * as React from "react"
-import { graphql } from "gatsby"
-import { Container, Section, FlexList, Box, Text } from "./ui"
-import * as styles from "./about-stat-list.css"
+import * as React from "react";
+import { graphql } from "gatsby";
+import { Container, Section, FlexList, Box, Text } from "./ui";
+import * as styles from "./about-stat-list.css";
 
 function AboutStat(props) {
   return (
@@ -9,7 +9,7 @@ function AboutStat(props) {
       {props.value && <Text variant="stat">{props.value}</Text>}
       {props.label && <Text variant="statLabel">{props.label}</Text>}
     </Box>
-  )
+  );
 }
 
 export default function AboutStatList(props) {
@@ -17,13 +17,13 @@ export default function AboutStatList(props) {
     <Section>
       <Container>
         <FlexList className={styles.statList} variant="center" responsive>
-          {props.content.map((stat) => (
+          {props?.content?.map((stat) => (
             <AboutStat key={stat.id} {...stat} />
           ))}
         </FlexList>
       </Container>
     </Section>
-  )
+  );
 }
 
 export const query = graphql`
@@ -35,4 +35,4 @@ export const query = graphql`
       label
     }
   }
-`
+`;
