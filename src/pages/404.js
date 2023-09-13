@@ -1,5 +1,4 @@
 import * as React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from "../components/layout";
 import { Container, Box, Heading, Text, Link, Flex } from "../components/ui";
 import ChevronRight from "../components/chevron-right";

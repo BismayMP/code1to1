@@ -1,5 +1,4 @@
 import * as React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import * as sections from "../components/sections";
@@ -8,7 +7,6 @@ import SEOHead from "../components/head";
 
 export default function Homepage(props) {
   const { homepage } = props.data;
-  console.log(props);
   return (
     <Layout>
       {homepage?.blocks?.map((block) => {
