@@ -12,9 +12,12 @@ export default function Homepage(props) {
   return (
     <Layout>
       {homepage?.blocks?.map((block) => {
+        if (block === null) {
+          return <></>;
+        }
         const { id, blocktype, ...componentProps } = block;
-        const Component = sections && sections[blocktype] ? sections[blocktype] : Fallback;
-        return Component ? <Component key={id} {...componentProps} /> : <></>;
+        const Component = sections && sections[blocktype] || Fallback;
+        return <Component key={id} {...componentProps} />;
       })}
     </Layout>
   );
