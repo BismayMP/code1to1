@@ -32,7 +32,11 @@ export default function Homepage(props) {
 }
 export const Head = (props) => {
   const { homepage } = props.data;
-  return <SEOHead {...homepage} />;
+  return <SEOHead
+    title={homepage?.title}
+    description={homepage?.description}
+    image={homepage?.image}
+  />;
 };
 export const query = graphql`
   {
