@@ -19,7 +19,6 @@ import {
   IconLink,
   VisuallyHidden,
 } from "./ui";
-import BrandLogo from "./brand-logo";
 
 const socialMedia = {
   TWITTER: {

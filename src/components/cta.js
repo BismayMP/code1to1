@@ -24,7 +24,7 @@ export default function HomepageCta(props) {
           {props.text}
         </Text>
         }
-        <ButtonList links={props.links} variant="center" reversed />
+        {props.links && props.links.length > 0 && <ButtonList links={props.links} variant="center" reversed />}
         {
           props.hasContactForm &&
           <ContactForm />

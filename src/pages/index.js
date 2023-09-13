@@ -8,15 +8,15 @@ import SEOHead from "../components/head";
 
 export default function Homepage(props) {
   const { homepage } = props.data;
-
+  console.log(props);
   return (
     <Layout>
       {homepage?.blocks?.map((block) => {
-        if (block === null) {
+        if (block === null || !sections) {
           return <></>;
         }
         const { id, blocktype, ...componentProps } = block;
-        const Component = sections && sections[blocktype] || Fallback;
+        const Component = sections[blocktype] || Fallback;
         return <Component key={id} {...componentProps} />;
       })}
     </Layout>
