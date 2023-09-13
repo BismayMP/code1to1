@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Form } from 'react-bootstrap';
-import { Controller, useForm } from 'react-hook-form';
 import { FormButton } from './ui';
 import ReCAPTCHA from 'react-google-recaptcha';
 
@@ -11,21 +10,19 @@ if (typeof RECAPTCHA_KEY === 'undefined') {
 
 export default function ContactForm() {
     const recaptchaRef = React.createRef();
-    const { control, handleSubmit, setValue } = useForm({
-        defaultValues: {
-            name: "",
-            email: "",
-            phoneNumber: "",
-            message: ""
-        },
-    });
+    const [name, setName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [message, setMessage] = React.useState("");
 
-    const onSubmit = (data) => {
+    const onSubmit = (event) => {
+        event.preventDefault();
         const recaptchaValue = recaptchaRef.current.getValue();
         const body = new URLSearchParams({
             'form-name': "contact",
             'g-recaptcha-response': recaptchaValue,
-            ...data
+            name,
+            email,
+            message
         }).toString();
         fetch("/", {
             method: "POST",
@@ -34,46 +31,27 @@ export default function ContactForm() {
         })
             .then(() => alert("Thank you, we'll get in touch as soon as possible"))
             .catch((error) => alert(error));
-        setValue("name", "");
-        setValue("email", "");
-        setValue("phoneNumber", "");
-        setValue("message", "");
+        setName("");
+        setEmail("");
+        setMessage("");
     };
 
     return (
         <Form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={onSubmit}
             name="contact"
             data-netlify="true"
             data-netlify-recaptcha="true"
             netlify-honeypot="bot-field">
-            <Controller
-                name="name"
-                control={control}
-                render={({ field }) => (
-                    <Form.Group className="mb-3" controlId="name">
-                        <Form.Control required type="name" placeholder="Enter Full name" {...field} />
-                    </Form.Group>
-                )}
-            />
-            <Controller
-                name="email"
-                control={control}
-                render={({ field }) => (
-                    <Form.Group className="mb-3" controlId="email">
-                        <Form.Control required type="email" placeholder="Enter email" {...field} />
-                    </Form.Group>
-                )}
-            />
-            <Controller
-                name="message"
-                control={control}
-                render={({ field }) => (
-                    <Form.Group className="mb-3" controlId="message">
-                        <Form.Control required as="textarea" rows={4} placeholder="Message" {...field} />
-                    </Form.Group>
-                )}
-            />
+            <Form.Group className="mb-3" controlId="name">
+                <Form.Control required type="name" placeholder="Enter Full name" name="name" value={name} onChange={(event) => setName(event.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="email">
+                <Form.Control required type="email" placeholder="Enter email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="message">
+                <Form.Control required as="textarea" rows={4} placeholder="Message" name="message" value={message} onChange={(event) => setMessage(event.target.value)} />
+            </Form.Group>
             <input type="hidden" name="form-name" value="contact" />
             <ReCAPTCHA ref={recaptchaRef} sitekey={RECAPTCHA_KEY} />
             <div data-netlify-recaptcha="true"></div>
