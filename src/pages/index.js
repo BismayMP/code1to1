@@ -2,8 +2,12 @@ import * as React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import { HomepageCta, HomepageFeatureList, HomepageHero, HomepageLogoList, HomepageProductList } from "../components/sections";
 import SEOHead from "../components/head";
+import HomepageHero from "../components/hero";
+import HomepageFeatureList from "../components/feature-list";
+import HomepageLogoList from "../components/logo-list";
+import HomepageCta from "../components/cta";
+import HomepageProductList from "../components/product-list";
 
 export default function Homepage(props) {
   const { homepage } = props.data;

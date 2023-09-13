@@ -13,7 +13,7 @@ import {
   Text,
 } from "./ui";
 
-export default function Hero(props) {
+export default function HomepageHero(props) {
   return (
     <Section id={props.sectionId}>
       <Container>
