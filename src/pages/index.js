@@ -7,8 +7,14 @@ import SEOHead from "../components/head";
 
 export default function Homepage(props) {
   const { homepage } = props.data;
+  const [hasWindow, setHasWindow] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasWindow(true);
+    }
+  }, []);
 
-  if (!homepage) {
+  if (!homepage && !hasWindow) {
     return <></>;
   }
 
