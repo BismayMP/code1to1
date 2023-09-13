@@ -2,7 +2,7 @@ import * as React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import * as sections from "../components/sections";
+import { HomepageCta, HomepageFeatureList, HomepageHero, HomepageLogoList, HomepageProductList } from "../components/sections";
 import Fallback from "../components/fallback";
 import SEOHead from "../components/head";
 
@@ -11,12 +11,21 @@ export default function Homepage(props) {
   return (
     <Layout>
       {homepage?.blocks?.map((block) => {
-        if (block === null || !sections) {
-          return <></>;
-        }
         const { id, blocktype, ...componentProps } = block;
-        const Component = sections[blocktype] || Fallback;
-        return <Component key={id} {...componentProps} />;
+        switch (blocktype) {
+          case "HomepageHero":
+            return <HomepageHero key={id} {...componentProps} />;
+          case "HomepageLogoList":
+            return <HomepageLogoList key={id} {...componentProps} />;
+          case "HomepageProductList":
+            return <HomepageProductList key={id} {...componentProps} />;
+          case "HomepageCta":
+            return <HomepageCta key={id} {...componentProps} />;
+          case "HomepageFeatureList":
+            return <HomepageFeatureList key={id} {...componentProps} />;
+          default:
+            return <></>;
+        }
       })}
     </Layout>
   );
